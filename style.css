@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    font-family: "PT Sans", sans-serif;
+}
+
+/* General page styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Date and Time input styles */
+.datetime-input {
+    font-size: 24px;
+    padding: 10px;
+    margin: 15px 0;
+    width: 50%;
+    max-width: 300px;
+    text-align: center;
+}
+
+/* Button styling */
+button {
+    background-color: #811616;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ccc;
+    color: #811616;
+}
+
+
+/* Food grid styles */
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    margin: 15px 0;
+}
+
+.food-item {
+    width: 180px;
+    height: 230px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    transition: transform 0.3s ease, border 0.3s ease;
+    cursor: pointer;
+    /* Show pointer on hover */
+    
+}
+
+.food-item:hover {
+    transform: scale(1.08);
+    /* Scale on hover */
+}
+
+.food-item.selected {
+    border: 2px solid #811616;
+    /* Highlight selected food */
+    transform: scale(1.1);
+    /* Slightly increase size of selected image */
+}
+
+/* Style for the background video */
+#bg-video {
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    /* Position the video at the bottom */
+    width: 100%;
+    /* Let the width auto-adjust */
+    height: 100vh;
+    transform: translateX(-50%);
+    /* Center the video horizontally */
+    object-fit: cover;
+    /* Ensure the video covers the entire area */
+    z-index: -1;
+    /* Keep the video behind other content */
+    
+}
+
+/* Centering content */
+.content {
+    position: relative;
+    z-index: 1;
+    /* Ensure content appears above the video */
+    color: white;
+    /* Change text color for better visibility */
+    text-align: center;
+    /* Center-align text */
+}
+
+.choice {
+    display: flex;
+    align-items: center;
+    /* Align items vertically */
+    justify-content: center;
+    /* Center the whole choice section */
+    margin-bottom: 20px;
+    /* Adds space between choices */
+    width: 100%;
+    /* Ensure full width for centering */
+}
+
+.choice h2 {
+    margin-right: 30px;
+    /* Adds space between the heading and the image */
+}
+
+.summary-item {
+    width: 150px;
+    /* Adjust the size as needed */
+    height: 150px;
+    /* Adjust the size as needed */
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 6px;
+}
+
+
+@media (max-width: 480px) {
+
+    /* Additional adjustments for very small screens */
+    .food-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* Change to 2 columns */
+        width: 100%;
+    }
+
+    .food-item {
+        width: 140px;
+        height: 140px;
+        margin-left: 15px;
+    }
+
+    .content {
+        padding: 10px;
+        /* Less padding on mobile */
+    }
+
+    h1,
+    h2 {
+        margin-top: 10%;
+        font-size: 25px;
+        /* Smaller headings */
+    }
+
+    .datetime-input {
+        font-size: 16px;
+        /* Even smaller font size */
+    }
+    .content{
+        overflow: scroll;
+    
+    }
+}

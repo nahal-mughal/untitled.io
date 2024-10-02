@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Date and Time</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Choose a date and time</h1>
+    <input type="date" id="date" class="datetime-input">
+    <input type="time" id="time" class="datetime-input">
+    <button onclick="validateSelection()">Next</button>
+
+    <script>
+        // Set minimum date and time to current
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').setAttribute('min', today);
+
+        function validateSelection() {
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const selectedDate = new Date(date + 'T' + time);
+            const now = new Date();
+
+            if (!date || !time) {
+                alert("Please select a date/time, my love.");
+            } else if (selectedDate < now) {
+                alert("You can't select a date/time in the past, my love.");
+            } else {
+                // Format the date as dd-mm-yyyy
+                const formattedDate = new Date(date);
+                const dd = String(formattedDate.getDate()).padStart(2, '0');
+                const mm = String(formattedDate.getMonth() + 1).padStart(2, '0'); // January is 0!
+                const yyyy = formattedDate.getFullYear();
+                const dateString = `${dd}-${mm}-${yyyy}`;
+
+                // Store formatted date and selected time in local storage
+                localStorage.setItem('date', dateString);
+                localStorage.setItem('time', time);
+
+                // Proceed to the next page
+                location.href = 'place.html';
+            }
+        }
+    </script>
+</body>
+</html>

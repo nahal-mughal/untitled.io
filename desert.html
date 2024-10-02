@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What would u like to have in dessert?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>What would u like to have in dessert?</h1>
+    
+    <div class="food-grid">
+        <img src="cake.png" alt="Dessert 1" class="food-item" onclick="selectDessert(this)">
+        <img src="donut.png" alt="Dessert 2" class="food-item" onclick="selectDessert(this)">
+        <img src="kunafa.png" alt="Dessert 3" class="food-item" onclick="selectDessert(this)">
+        <img src="pie.png" alt="Dessert 4" class="food-item" onclick="selectDessert(this)">
+        <img src="pudding.png" alt="Dessert 5" class="food-item" onclick="selectDessert(this)">
+        <img src="rasgula.png" alt="Dessert 6" class="food-item" onclick="selectDessert(this)">
+        <img src="smore.png" alt="Dessert 7" class="food-item" onclick="selectDessert(this)">
+        <img src="sundae.png" alt="Dessert 8" class="food-item" onclick="selectDessert(this)">
+    </div>
+
+    <button onclick="validateDessertSelection()">Next</button>
+
+    <script>
+        let selectedDessert = null; // Variable to store selected dessert
+
+        function selectDessert(dessertImage) {
+            // Deselect previously selected image
+            if (selectedDessert) {
+                selectedDessert.classList.remove('selected');
+            }
+            // Select the clicked image
+            selectedDessert = dessertImage;
+            selectedDessert.classList.add('selected');
+            localStorage.setItem('selectedDesert', dessertImage.src);
+        }
+
+        function validateDessertSelection() {
+            if (!selectedDessert) {
+                alert("Select dessert, my pumpkin pie.");
+            } else {
+                // Store the selected dessert in local storage
+                localStorage.setItem('selectedDessert', selectedDessert.alt);
+                location.href = 'outfit.html';
+            }
+        }
+    </script>
+</body>
+</html>

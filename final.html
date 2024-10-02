@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Ready!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Background Video -->
+     <div class="main">
+         <video autoplay muted loop id="bg-video">
+             <source src="bg-vid.mp4" type="video/mp4">
+         
+         </video>
+     </div>
+
+    <div class="content">
+        <h1 style="margin-top: 50px;">Get ready for our date on <span id="selected-date"></span> at <span id="selected-time"></span></h1>
+
+        <div class="choice">
+            <h2>Your Place Choice:</h2>
+            <img id="place-image" class="summary-item" alt="Selected Place">
+        </div>
+        <div class="choice">
+            <h2>Your Food Choice:</h2>
+            <img id="food-image" class="summary-item" alt="Selected Food">
+        </div>
+        <div class="choice">
+            <h2>Your Dessert Choice:</h2>
+            <img id="desert-image" class="summary-item" alt="Selected Dessert">
+        </div>
+
+        <div class="choice">
+            <h2>Your Outfit Choice:</h2>
+            <img id="outfit-image" class="summary-item" alt="Selected Outfit">
+        </div>
+
+
+    </div>
+
+    <script>
+        // Get the date and time from local storage
+        document.getElementById('selected-date').textContent = localStorage.getItem('date');
+        document.getElementById('selected-time').textContent = localStorage.getItem('time');
+
+        // Get and display the selected food, dessert, and outfit images
+        const selectedPlace = localStorage.getItem('selectedPlace') || 'default-place.jpg';
+        const selectedFood = localStorage.getItem('selectedFood') || 'default-food.jpg';
+        const selectedDesert = localStorage.getItem('selectedDesert') || 'default-desert.jpg';
+        const selectedOutfit = localStorage.getItem('selectedOutfit') || 'default-outfit.jpg';
+
+        // Set the sources for the images
+        document.getElementById('place-image').src = selectedPlace;
+        document.getElementById('food-image').src = selectedFood;
+        document.getElementById('desert-image').src = selectedDesert;
+        document.getElementById('outfit-image').src = selectedOutfit;
+
+
+    </script>
+</body>
+
+</html>

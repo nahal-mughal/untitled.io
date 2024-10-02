@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What would u like to eat?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>What would u like to eat?</h1>
+
+    <div class="food-grid">
+        <img src="pizza.jpg" alt="Food 1" class="food-item" onclick="selectFood(this)">
+        <img src="burger.jpg" alt="Food 2" class="food-item" onclick="selectFood(this)">
+        <img src="hotdog.jpg" alt="Food 3" class="food-item" onclick="selectFood(this)">
+        <img src="panipuri.jpg" alt="Food 4" class="food-item" onclick="selectFood(this)">
+        <img src="pasta.jpg" alt="Food 5" class="food-item" onclick="selectFood(this)">
+        <img src="shawarma.jpg" alt="Food 6" class="food-item" onclick="selectFood(this)">
+        <img src="ramen.jpg" alt="Food 7" class="food-item" onclick="selectFood(this)">
+        <img src="roll.jpg" alt="Food 8" class="food-item" onclick="selectFood(this)">
+    </div>
+
+    <button onclick="validateFoodSelection()">Next</button>
+
+    <script>
+        let selectedFood = null; // Variable to store selected food
+
+        function selectFood(foodImage) {
+            // Deselect previously selected image
+            if (selectedFood) {
+                selectedFood.classList.remove('selected');
+            }
+            // Select the clicked image
+            selectedFood = foodImage;
+            selectedFood.classList.add('selected');
+            // Store the selected food image in local storage
+            localStorage.setItem('selectedFood', foodImage.src); // Store the src of the image
+        }
+
+        function validateFoodSelection() {
+            if (!selectedFood) {
+                alert("Select your food, pookie.");
+            } else {
+                // Store the selected food image in local storage
+                localStorage.setItem('selectedFood', selectedFood.src); // Ensure the image source is stored
+                location.href = 'desert.html'; // Navigate to desert.html
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

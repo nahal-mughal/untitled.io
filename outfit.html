@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What would u like me to wear?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>What would u like me to wear?</h1>
+
+    <div class="food-grid">
+        <img src="1.png" alt="Outfit 1" class="food-item" onclick="selectOutfit(this)">
+        <img src="2.jpg" alt="Outfit 2" class="food-item" onclick="selectOutfit(this)">
+        <img src="3.jpg" alt="Outfit 3" class="food-item" onclick="selectOutfit(this)">
+        <img src="4.jpg" alt="Outfit 4" class="food-item" onclick="selectOutfit(this)">
+        <img src="5.jpg" alt="Outfit 5" class="food-item" onclick="selectOutfit(this)">
+        <img src="6.jpg" alt="Outfit 6" class="food-item" onclick="selectOutfit(this)">
+        <img src="7.jpg" alt="Outfit 7" class="food-item" onclick="selectOutfit(this)">
+        <img src="8.jpg" alt="Outfit 8" class="food-item" onclick="selectOutfit(this)">
+    </div>
+
+    <button onclick="validateOutfitSelection()">Next</button>
+
+    <script>
+        let selectedOutfit = null; // Variable to store selected outfit
+
+        function selectOutfit(outfitImage) {
+            // Deselect previously selected image
+            if (selectedOutfit) {
+                selectedOutfit.classList.remove('selected');
+            }
+            // Select the clicked image
+            selectedOutfit = outfitImage;
+            selectedOutfit.classList.add('selected');
+            // Store the selected outfit image in local storage
+            localStorage.setItem('selectedOutfit', outfitImage.src); // Store the src of the image
+        }
+
+        function validateOutfitSelection() {
+            if (!selectedOutfit) {
+                alert("Select your outfit, pookie.");
+            } else {
+                // Store the selected outfit image in local storage
+                localStorage.setItem('selectedOutfit', selectedOutfit.src); // Ensure the image source is stored
+                location.href = 'final.html'; // Navigate to final.html
+            }
+        }
+
+    </script>
+</body>
+
+</html>
